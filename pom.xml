@@ -7,6 +7,16 @@
     <groupId>com.jonas.publictransport</groupId>
     <artifactId>bus-routes-app</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <dropwizard-core.version>1.0.2</dropwizard-core.version>
+    </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-core</artifactId>
+            <version>${dropwizard-core.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
