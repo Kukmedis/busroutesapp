@@ -1,4 +1,4 @@
-package com.jonas.publictransport.presentations;
+package com.jonas.publictransport.representations;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -4,9 +4,13 @@ import io.dropwizard.Configuration;
 
 public class BusRoutesApplicationConfiguration extends Configuration {
 
-    public final String pathToData;
+    private String pathToData;
 
-    public BusRoutesApplicationConfiguration(String pathToData) {
+    public String getPathToData() {
+        return pathToData;
+    }
+
+    public void setPathToData(String pathToData) {
         this.pathToData = pathToData;
     }
 }

@@ -1,13 +1,24 @@
-package com.jonas.publictransport.routefinders;
+package com.jonas.publictransport.core;
 
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class DirectRouteCheckerTest {
 
-    private DirectRouteChecker directRouteChecker = new DirectRouteChecker("test_data.txt");
+    private DirectRouteChecker directRouteChecker;
+
+    @Before
+    public void setUp() throws Exception {
+        directRouteChecker = new DirectRouteChecker(Files.readAllLines(
+                Paths.get(new File("src/test/resources/test_data.txt").getAbsolutePath())));
+    }
 
     @Test
     public void shouldTellThenThereIsADirectRoute() throws Exception {

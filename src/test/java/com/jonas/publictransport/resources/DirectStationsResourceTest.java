@@ -1,6 +1,6 @@
 package com.jonas.publictransport.resources;
 
-import com.jonas.publictransport.routefinders.DirectRouteChecker;
+import com.jonas.publictransport.core.DirectRouteChecker;
 import io.dropwizard.testing.FixtureHelpers;
 import io.dropwizard.testing.junit.ResourceTestRule;
 import org.junit.ClassRule;

@@ -1,7 +1,7 @@
 package com.jonas.publictransport.resources;
 
-import com.jonas.publictransport.presentations.DirectRouteResponse;
-import com.jonas.publictransport.routefinders.DirectRouteChecker;
+import com.jonas.publictransport.representations.DirectRouteResponse;
+import com.jonas.publictransport.core.DirectRouteChecker;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;

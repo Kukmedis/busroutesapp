@@ -6,7 +6,7 @@
 
     <groupId>com.jonas.publictransport</groupId>
     <artifactId>bus-routes-app</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <properties>
         <dropwizard-core.version>1.0.0</dropwizard-core.version>
         <dropwizard-guice.version>1.0.0.3</dropwizard-guice.version>
@@ -34,6 +34,18 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.jonas.publictransport.BusRoutesApplication</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
