@@ -3,7 +3,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Keep the pwd in mind!
 # Example: RUN="java -jar $DIR/target/magic.jar"
-RUN="java -Ddw.pathToData=$2 -jar $DIR/target/bus-routes-app-1.0.0.jar server src/main/resources/application.yml"
+RUN="java -Ddw.pathToData=$2 -jar $DIR/target/bus-routes-app-1.0.0.jar server application.yml"
 echo $RUN
 NAME=bus-routes-app
 
@@ -11,6 +11,7 @@ PIDFILE=/tmp/$NAME.pid
 LOGFILE=/tmp/$NAME.log
 
 start() {
+    sleep 2
     if [ -f $PIDFILE ]; then
         if kill -0 $(cat $PIDFILE); then
             echo 'Service already running' >&2
