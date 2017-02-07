@@ -1,11 +1,8 @@
 package com.jonas.publictransport.core;
 
+import com.google.common.collect.Lists;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -16,8 +13,10 @@ public class DirectRouteCheckerTest {
 
     @Before
     public void setUp() throws Exception {
-        directRouteChecker = new DirectRouteChecker(Files.readAllLines(
-                Paths.get(new File("src/test/resources/test_data.txt").getAbsolutePath())));
+        directRouteChecker = new DirectRouteChecker(Lists.newArrayList(
+                Lists.newArrayList(0, 1, 2, 3, 4),
+                Lists.newArrayList(3, 1, 6, 5),
+                Lists.newArrayList(0, 6, 4)));
     }
 
     @Test
