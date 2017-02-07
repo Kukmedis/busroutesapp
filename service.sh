@@ -3,11 +3,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Keep the pwd in mind!
 # Example: RUN="java -jar $DIR/target/magic.jar"
-RUN="java -jar $DIR/target/bus-routes-app-1.0.0.jar server application.yml -Ddw.pathToData=$2"
+RUN="java -Ddw.pathToData=$2 -jar $DIR/target/bus-routes-app-1.0.0.jar server src/main/resources/application.yml"
 echo $RUN
 NAME=bus-routes-app
-
-DATA_FILE=$2
 
 PIDFILE=/tmp/$NAME.pid
 LOGFILE=/tmp/$NAME.log
@@ -21,7 +19,7 @@ start() {
             rm -f $PIDFILE
         fi
     fi
-    local CMD="$RUN $DATA_FILE &> \"$LOGFILE\" & echo \$!"
+    local CMD="$RUN &> \"$LOGFILE\" & echo \$!"
     sh -c "$CMD" > $PIDFILE
 }
 
