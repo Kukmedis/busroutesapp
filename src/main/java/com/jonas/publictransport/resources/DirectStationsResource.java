@@ -1,6 +1,7 @@
 package com.jonas.publictransport.resources;
 
 import com.jonas.publictransport.presentations.DirectRouteResponse;
+import com.jonas.publictransport.routefinders.DirectRouteChecker;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
@@ -15,12 +16,17 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class DirectStationsResource {
 
+    private final DirectRouteChecker directRouteChecker;
+
+    public DirectStationsResource(DirectRouteChecker directRouteChecker) {
+        this.directRouteChecker = directRouteChecker;
+    }
+
     @GET
     @Path("/direct")
-    @QueryParam("departure")
-    public DirectRouteResponse isThereADirectRoute(@QueryParam("dep_sid") @NotNull Integer departure,
-                                                   @QueryParam("arr_sid") @NotNull Integer arrival) {
-        return new DirectRouteResponse(departure, arrival, true);
+    public DirectRouteResponse isThereADirectRoute(@QueryParam("dep_sid") @NotNull Integer depSid,
+                                                   @QueryParam("arr_sid") @NotNull Integer arrSid) {
+        return new DirectRouteResponse(depSid, arrSid, directRouteChecker.isThereADirectRoute(depSid, arrSid));
     }
 
 }

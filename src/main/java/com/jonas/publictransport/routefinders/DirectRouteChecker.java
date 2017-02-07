@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class DirectRouteChecker {
 
-    private List<List<String>> routeDatabase;
+    private List<List<Integer>> routeDatabase;
 
     public DirectRouteChecker(String pathToData) {
         List<String> fileContent;
@@ -24,12 +24,13 @@ public class DirectRouteChecker {
         routeDatabase = fileContent.stream().map(DirectRouteChecker::parseFileLine).collect(Collectors.toList());
     }
 
-    public boolean isThereADirectRoute(String depSid, String arrSid) {
+    public boolean isThereADirectRoute(Integer depSid, Integer arrSid) {
         return routeDatabase.stream().anyMatch(
                 it -> it.contains(depSid) && it.contains(arrSid) && it.indexOf(depSid) < it.indexOf(arrSid));
     }
 
-    private static List<String> parseFileLine(String line) {
-        return Arrays.asList(line.replaceFirst("[^ ]+\\s", "").split(" "));
+    private static List<Integer> parseFileLine(String line) {
+        return Arrays.stream(line.replaceFirst("[^ ]+\\s", "").split(" "))
+                .map(Integer::new).collect(Collectors.toList());
     }
 }
